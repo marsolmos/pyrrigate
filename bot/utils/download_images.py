@@ -14,7 +14,7 @@ def downloadimages():
 
     for query in search_queries:
         download(
-                 query, limit=1000,  output_dir='/home/black/Data Warehouse/pyrrigate/rawdata',
+                 query, limit=1000,  output_dir='D:\\Data Warehouse\\plantabit\\0_rawdata',
                  adult_filter_off=True, force_replace=False,
                  timeout=60, verbose=True
                  )
