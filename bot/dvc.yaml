@@ -7,7 +7,16 @@ stages:
     - train.seed
     - train.model_name
     - train.dataset
+    - train.epochs
+    - train.steps_per_epoch
     - train.batch
     - train.loss
     - train.learning_rate
-    - train.epochs
+  evaluate:
+    cmd: python utils/classifier/evaluate.py utils/classifier/dvc_objects/model/saved_model.pb utils/classifier/dvc_objects/scores.json prc.json roc.json
+    deps:
+    - utils/classifier/dvc_objects/model/saved_model.pb
+    - utils/classifier/evaluate.py
+    metrics:
+    - utils/classifier/dvc_objects/scores.json:
+        cache: false

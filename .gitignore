@@ -130,3 +130,4 @@ dmypy.json
 
 # Directories
 bot/utils/classifier/models/*
+bot/utils/classifier/dvc_objects/model/*

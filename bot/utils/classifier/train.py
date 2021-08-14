@@ -20,10 +20,11 @@ params = yaml.safe_load(open("params.yaml"))["train"]
 seed = params["seed"]
 model_name = params["model_name"]
 dataset = params["dataset"]
+epochs = params["epochs"]
+steps_per_epoch = params["steps_per_epoch"]
 batch = params["batch"]
 loss = params["loss"]
 learning_rate = params["learning_rate"]
-epochs = params["epochs"]
 
 # Define paths
 base_dir = os.path.join("D:/Data Warehouse/plantabit", dataset)
@@ -100,17 +101,22 @@ output = layers.Dense(12, activation='softmax')(x)
 model = Model(img_input, output)
 model.compile(loss=loss,
               optimizer=RMSprop(learning_rate=learning_rate),
-              metrics=['acc'])
+              metrics=['categorical_accuracy'])
 
 history = model.fit(
       train_generator,
-      steps_per_epoch=100,
+      steps_per_epoch=steps_per_epoch,
       epochs=epochs,
       validation_data=validation_generator,
       validation_steps=50,
       verbose=1)
 
-# Save the model to disk
-print('\nSAVING MODEL!\n')
+# Save the model to disk into historical archive folder
+print('\nSaving model into historical registry as {}'.format(model_name))
 save_name = 'utils/classifier/models/{}'.format(model_name)
+model.save(save_name)
+
+# Save the model and metrics to disk into historical archive folder
+print('Saving model for DVC - MLOps tracking\n')
+save_name = 'utils/classifier/dvc_objects/model'
 model.save(save_name)
