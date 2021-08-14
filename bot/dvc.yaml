@@ -1,0 +1,13 @@
+stages:
+  train:
+    cmd: python utils/classifier/train.py
+    deps:
+    - utils/classifier/train.py
+    params:
+    - train.seed
+    - train.model_name
+    - train.dataset
+    - train.batch
+    - train.loss
+    - train.learning_rate
+    - train.epochs

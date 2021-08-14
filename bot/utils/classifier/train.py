@@ -1,5 +1,7 @@
-'''Preprocessing pipelines for Planta-Bit'''
+'''Preprocessing and training pipelines for Planta-Bit'''
 import os
+import pickle
+import yaml
 import zipfile
 import matplotlib.pyplot as plt
 
@@ -13,9 +15,18 @@ from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
-MODEL_NAME = 'Plantabit-alpha-0-1'
-seed = 123 # Random number generator seed to be used along preprocessing
-base_dir = "D:/Data Warehouse/plantabit/0_rawdata"
+# Read parameters and assign them to a local variable
+params = yaml.safe_load(open("params.yaml"))["train"]
+seed = params["seed"]
+model_name = params["model_name"]
+dataset = params["dataset"]
+batch = params["batch"]
+loss = params["loss"]
+learning_rate = params["learning_rate"]
+epochs = params["epochs"]
+
+# Define paths
+base_dir = os.path.join("D:/Data Warehouse/plantabit", dataset)
 train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
 
@@ -41,7 +52,7 @@ val_datagen = ImageDataGenerator(rescale=1./255)
 train_generator = train_datagen.flow_from_directory(
         train_dir,  # This is the source directory for training images
         target_size=(150, 150),  # All images will be resized to 150x150
-        batch_size=32,
+        batch_size=batch,
         seed=seed,
         class_mode='categorical')
 
@@ -50,7 +61,8 @@ train_generator = train_datagen.flow_from_directory(
 validation_generator = val_datagen.flow_from_directory(
         validation_dir,
         target_size=(150, 150),
-        batch_size=32,
+        batch_size=batch,
+        seed=seed,
         class_mode='categorical')
 
 # Our input feature map is 150x150x3: 150x150 for the image pixels, and 3 for
@@ -86,18 +98,19 @@ output = layers.Dense(12, activation='softmax')(x)
 
 # Configure and compile the model
 model = Model(img_input, output)
-model.compile(loss='categorical_crossentropy',
-              optimizer=RMSprop(learning_rate=0.001),
+model.compile(loss=loss,
+              optimizer=RMSprop(learning_rate=learning_rate),
               metrics=['acc'])
 
 history = model.fit(
       train_generator,
       steps_per_epoch=100,
-      epochs=5,
+      epochs=epochs,
       validation_data=validation_generator,
       validation_steps=50,
       verbose=1)
 
+# Save the model to disk
 print('\nSAVING MODEL!\n')
-save_name = 'models/{}'.format(MODEL_NAME)
+save_name = 'utils/classifier/models/{}'.format(model_name)
 model.save(save_name)

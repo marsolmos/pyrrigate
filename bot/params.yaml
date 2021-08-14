@@ -1,0 +1,8 @@
+train:
+  seed: 123
+  model_name: "Plantabit-alpha-0-1"
+  dataset: "0_rawdata"
+  batch: 32
+  loss: "categorical_crossentropy"
+  learning_rate: 0.001
+  epochs: 2
