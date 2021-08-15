@@ -20,3 +20,8 @@ stages:
     metrics:
     - utils/classifier/dvc_objects/test_scores.json:
         cache: false
+    plots:
+    - utils/classifier/dvc_objects/confusion.json:
+        cache: false
+        x: predicted
+        y: actual
