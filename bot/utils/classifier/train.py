@@ -40,6 +40,16 @@ val_scores = "utils/classifier/dvc_objects/val_scores.json"
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0],True)
 
+# Initialize TensorBoard
+model_log_name = model_name + "-" + dataset + "-" + datetime.datetime.now().strftime("%Y%m%d/%H%M%S")
+log_dir = "utils/classifier/models/logs/" + model_log_name
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+tensorboard = TensorBoard(
+    log_dir='logs', histogram_freq=0, write_graph=True, write_images=True,
+    update_freq='epochs', profile_batch=2, embeddings_freq=0,
+    embeddings_metadata=None
+)
+
 # Adding rescale, rotation_range, width_shift_range, height_shift_range,
 # shear_range, and zoom_range to our ImageDataGenerator
 train_datagen = ImageDataGenerator(
@@ -114,7 +124,9 @@ history = model.fit(
       epochs=epochs,
       validation_data=validation_generator,
       validation_steps=50,
-      verbose=1)
+      verbose=1,
+      callbacks=[tensorboard_callback]
+      )
 
 # Save the model to disk into historical archive folder
 print('\nSaving model into historical registry as {}'.format(model_name))
