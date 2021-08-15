@@ -14,7 +14,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from sklearn.metrics import confusion_matrix
 
 
 scores_file = "utils/classifier/dvc_objects/test_scores.json"
@@ -62,15 +61,7 @@ test_generator = test_datagen.flow_from_directory(
         seed=seed,
         class_mode='categorical')
 
-# Evaluate model metrics
-results = model.evaluate(test_generator, batch_size=batch)
-test_loss = results[0]
-test_acc = results[1]
-
-with open(scores_file, "w") as fd:
-    json.dump({"test_loss": test_loss, "test_acc": test_acc}, fd, indent=4)
-
-# Save Confusion Matrix
+# Predict with the trained model
 Y_pred = model.predict(test_generator)
 y_pred = np.argmax(Y_pred, axis=1)
 y_true = test_generator.classes
@@ -78,7 +69,32 @@ y_true = test_generator.classes
 y_pred = [map_classes[k] for k in y_pred]
 y_true = [map_classes[k] for k in y_true]
 
+# Evaluate model metrics
+results = model.evaluate(test_generator)
+test_loss = results[0]
+test_acc = results[1]
+test_auc = results[2]
+test_prc = results[3]
+test_recall = results[4]
+test_fp = int(results[5])
+test_tp = int(results[6])
+test_fn = int(results[7])
+test_tn = int(results[8])
 
+with open(scores_file, "w") as fd:
+    json.dump({
+            "test_loss": test_loss,
+            "test_acc": test_acc,
+            "test_auc": test_auc,
+            "test_prc": test_prc,
+            "test_recall": test_recall,
+            "test_fp": test_fp,
+            "test_tp": test_tp,
+            "test_fn": test_fn,
+            "test_tn": test_tn
+            }, fd, indent=4)
+
+# Save Confusion Matrix
 confusion_points = list(zip(y_true, y_pred))
 with open(confusion_file, "w") as fd:
     json.dump(

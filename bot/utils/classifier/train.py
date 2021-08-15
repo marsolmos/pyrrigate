@@ -13,6 +13,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 from tensorflow.keras import layers
 from tensorflow.keras import Model
+from tensorflow.keras import metrics
 from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.callbacks import TensorBoard
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -116,7 +117,16 @@ output = layers.Dense(12, activation='softmax')(x)
 model = Model(img_input, output)
 model.compile(loss=loss,
               optimizer=RMSprop(learning_rate=learning_rate),
-              metrics=['categorical_accuracy'])
+              metrics=[
+                    metrics.CategoricalAccuracy(),
+                    metrics.AUC(),
+                    metrics.Precision(),
+                    metrics.Recall(),
+                    metrics.FalsePositives(),
+                    metrics.TruePositives(),
+                    metrics.FalseNegatives(),
+                    metrics.TrueNegatives()
+              ])
 
 history = model.fit(
       train_generator,
