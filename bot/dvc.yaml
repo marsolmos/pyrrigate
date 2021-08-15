@@ -1,0 +1,27 @@
+stages:
+  train:
+    cmd: python utils/classifier/train.py
+    deps:
+    - utils/classifier/train.py
+    params:
+    - train.seed
+    - train.model_name
+    - train.dataset
+    - train.epochs
+    - train.steps_per_epoch
+    - train.batch
+    - train.loss
+    - train.learning_rate
+  evaluate:
+    cmd: python utils/classifier/evaluate.py
+    deps:
+    - utils/classifier/dvc_objects/model/saved_model.pb
+    - utils/classifier/evaluate.py
+    metrics:
+    - utils/classifier/dvc_objects/test_scores.json:
+        cache: false
+    plots:
+    - utils/classifier/dvc_objects/confusion.json:
+        cache: false
+        x: actual
+        y: predicted

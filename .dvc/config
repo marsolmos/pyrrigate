@@ -1,0 +1,4 @@
+[core]
+    remote = plantabit_remote
+['remote "plantabit_remote"']
+    url = s3://plantabit-dvc-remote/plantabit/
