@@ -23,5 +23,5 @@ stages:
     plots:
     - utils/classifier/dvc_objects/confusion.json:
         cache: false
-        x: predicted
-        y: actual
+        x: actual
+        y: predicted
