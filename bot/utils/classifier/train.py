@@ -1,4 +1,6 @@
 '''Preprocessing and training pipelines for Planta-Bit'''
+import datetime
+import json
 import os
 import pickle
 import yaml
@@ -12,6 +14,7 @@ import tensorflow as tf
 from tensorflow.keras import layers
 from tensorflow.keras import Model
 from tensorflow.keras.optimizers import RMSprop
+from tensorflow.keras.callbacks import TensorBoard
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
@@ -30,6 +33,8 @@ learning_rate = params["learning_rate"]
 base_dir = os.path.join("D:/Data Warehouse/plantabit", dataset)
 train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
+train_scores = "utils/classifier/dvc_objects/train_scores.json"
+val_scores = "utils/classifier/dvc_objects/val_scores.json"
 
 # Define GPU usage for training
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
@@ -116,7 +121,17 @@ print('\nSaving model into historical registry as {}'.format(model_name))
 save_name = 'utils/classifier/models/{}'.format(model_name)
 model.save(save_name)
 
-# Save the model and metrics to disk into historical archive folder
+# Save model to disk for DVC - MLOps tracking
 print('Saving model for DVC - MLOps tracking\n')
 save_name = 'utils/classifier/dvc_objects/model'
 model.save(save_name)
+
+# Save metrics to disk for DVC - MLOps tracking
+train_loss = history.history['loss'][-1]
+train_acc = history.history['categorical_accuracy'][-1]
+val_loss = history.history['val_loss'][-1]
+val_acc = history.history['val_categorical_accuracy'][-1]
+with open(train_scores, "w") as fd:
+    json.dump({"train_loss": train_loss, "train_acc": train_acc}, fd, indent=4)
+with open(val_scores, "w") as fd:
+    json.dump({"val_loss": val_loss, "val_acc": val_acc}, fd, indent=4)
