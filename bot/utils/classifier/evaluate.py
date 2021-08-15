@@ -14,15 +14,10 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-if len(sys.argv) != 5:
-    sys.stderr.write("Arguments error. Usage:\n")
-    sys.stderr.write("\tpython evaluate.py model features scores prc roc\n")
-    sys.exit(1)
 
-model_file = sys.argv[1]
-scores_file = sys.argv[2]
-prc_file = sys.argv[3]
-roc_file = sys.argv[4]
+scores_file = "utils/classifier/dvc_objects/test_scores.json"
+prc_file = "utils/classifier/dvc_objects/prc.json"
+roc_file = "utils/classifier/dvc_objects/roc.json"
 
 # Read parameters and assign them to a local variable
 params = yaml.safe_load(open("params.yaml"))["train"]

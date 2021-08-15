@@ -13,10 +13,10 @@ stages:
     - train.loss
     - train.learning_rate
   evaluate:
-    cmd: python utils/classifier/evaluate.py utils/classifier/dvc_objects/model/saved_model.pb utils/classifier/dvc_objects/scores.json prc.json roc.json
+    cmd: python utils/classifier/evaluate.py
     deps:
     - utils/classifier/dvc_objects/model/saved_model.pb
     - utils/classifier/evaluate.py
     metrics:
-    - utils/classifier/dvc_objects/scores.json:
+    - utils/classifier/dvc_objects/test_scores.json:
         cache: false
