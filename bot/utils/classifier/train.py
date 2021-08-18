@@ -185,7 +185,7 @@ history = model.fit(
       steps_per_epoch=steps_per_epoch,
       epochs=epochs,
       validation_data=validation_generator,
-      validation_steps=10,
+      validation_steps=1,
       verbose=1,
       callbacks=[tensorboard_callback]
       )
