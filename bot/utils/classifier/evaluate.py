@@ -82,7 +82,7 @@ test_recall = results[4]
 total = len(y_true)
 tp = len([x for x, y in zip(y_true, y_pred) if x == y])
 test_tpr = tp/total
-test_tnr = 1-tpr
+test_tnr = 1-test_tpr
 
 with open(scores_file, "w") as fd:
     json.dump({
