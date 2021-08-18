@@ -12,6 +12,8 @@ stages:
     - train.batch
     - train.loss
     - train.learning_rate
+    - train.l2_reg
+    - train.momentum
   evaluate:
     cmd: python utils/classifier/evaluate.py
     deps:

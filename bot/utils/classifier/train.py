@@ -12,9 +12,10 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 import tensorflow as tf
 from tensorflow.keras import layers
-from tensorflow.keras import Model
 from tensorflow.keras import metrics
-from tensorflow.keras.optimizers import RMSprop
+from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.regularizers import l2
+from tensorflow.keras.models import Sequential
 from tensorflow.keras.callbacks import TensorBoard
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
@@ -29,6 +30,8 @@ steps_per_epoch = params["steps_per_epoch"]
 batch = params["batch"]
 loss = params["loss"]
 learning_rate = params["learning_rate"]
+l2_reg = params["l2_reg"]
+momentum = params["momentum"]
 
 # Define paths
 base_dir = os.path.join("D:/Data Warehouse/plantabit", dataset)
@@ -68,7 +71,7 @@ val_datagen = ImageDataGenerator(rescale=1./255)
 # Flow training images in batches of 32 using train_datagen generator
 train_generator = train_datagen.flow_from_directory(
         train_dir,  # This is the source directory for training images
-        target_size=(150, 150),  # All images will be resized to 150x150
+        target_size=(227, 227),  # All images will be resized to 150x150
         batch_size=batch,
         seed=seed,
         class_mode='categorical')
@@ -77,46 +80,91 @@ train_generator = train_datagen.flow_from_directory(
 # Flow validation images in batches of 32 using val_datagen generator
 validation_generator = val_datagen.flow_from_directory(
         validation_dir,
-        target_size=(150, 150),
+        target_size=(227, 227),
         batch_size=batch,
         seed=seed,
         class_mode='categorical')
 
 # Our input feature map is 150x150x3: 150x150 for the image pixels, and 3 for
 # the three color channels: R, G, and B
-img_input = layers.Input(shape=(150, 150, 3))
+img_input = (227, 227, 3)
 
-# First convolution extracts 16 filters that are 3x3
-# Convolution is followed by max-pooling layer with a 2x2 window
-x = layers.Conv2D(16, 3, activation='relu')(img_input)
-x = layers.MaxPooling2D(2)(x)
+# First convolution extracts 96 filters that are 11x11
+# Convolution is followed by a layer Normalization and
+# max-pooling layer with a 2x2 window
+model = Sequential()
+model.add(layers.Conv2D(
+                    96, kernel_size=(11, 11),
+                    activation='relu', strides=(4, 4),
+                    padding="valid", input_shape=img_input,
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
+model.add(layers.BatchNormalization())
+model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-# Second convolution extracts 32 filters that are 3x3
-# Convolution is followed by max-pooling layer with a 2x2 window
-x = layers.Conv2D(32, 3, activation='relu')(x)
-x = layers.MaxPooling2D(2)(x)
+# Second convolution extracts 256 filters that are 5x5
+# Convolution is followed by max-pooling layer with a 1x1 window
+model.add(layers.Conv2D(
+                    256, kernel_size=(5, 5),
+                    activation='relu', strides=(1, 1),
+                    padding="same",
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
+model.add(layers.BatchNormalization())
+model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-# Third convolution extracts 64 filters that are 3x3
-# Convolution is followed by max-pooling layer with a 2x2 window
-x = layers.Convolution2D(64, 3, activation='relu')(x)
-x = layers.MaxPooling2D(2)(x)
+# Third convolution extracts 384 filters that are 3x3
+model.add(layers.Conv2D(
+                    384, kernel_size=(3, 3),
+                    activation='relu', strides=(1, 1),
+                    padding="same",
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
+
+# Fourth convolution extracts 192 filters that are 3x3
+model.add(layers.Conv2D(
+                    384, kernel_size=(3, 3),
+                    activation='relu', strides=(1, 1),
+                    padding="same",
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
+
+# Fifth convolution extracts 192 filters that are 3x3
+model.add(layers.Conv2D(
+                    256, kernel_size=(3, 3),
+                    activation='relu', strides=(1, 1),
+                    padding="same",
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
+model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
 # Flatten feature map to a 1-dim tensor
-x = layers.Flatten()(x)
+model.add(layers.Flatten())
 
-# Create a fully connected layer with ReLU activation and 512 hidden units
-x = layers.Dense(512, activation='relu')(x)
+# Create a fully connected layer with ReLU activation and 4096 hidden units
+model.add(layers.Dense(
+                    4096, activation='relu',
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
 
-# Add a dropout rate of 0.5
-x = layers.Dropout(0.5)(x)
+# Create a fully connected layer with ReLU activation and 4096 hidden units
+model.add(layers.Dense(
+                    4096, activation='relu',
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
 
 # Create output layer with a single node and sigmoid activation
-output = layers.Dense(12, activation='softmax')(x)
+model.add(layers.Dense(
+                    12, activation='softmax',
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
 
 # Configure and compile the model
-model = Model(img_input, output)
 model.compile(loss=loss,
-              optimizer=RMSprop(learning_rate=learning_rate),
+              optimizer=SGD(
+                            learning_rate=learning_rate,
+                            momentum=momentum
+                            ),
               metrics=[
                     metrics.CategoricalAccuracy(),
                     metrics.AUC(),
@@ -128,12 +176,16 @@ model.compile(loss=loss,
                     metrics.TrueNegatives()
               ])
 
+# Display model summary
+model.summary()
+
+# Train model to train-validation data
 history = model.fit(
       train_generator,
       steps_per_epoch=steps_per_epoch,
       epochs=epochs,
       validation_data=validation_generator,
-      validation_steps=50,
+      validation_steps=10,
       verbose=1,
       callbacks=[tensorboard_callback]
       )
