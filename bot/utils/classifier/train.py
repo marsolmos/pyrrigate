@@ -170,10 +170,6 @@ model.compile(loss=loss,
                     metrics.AUC(),
                     metrics.Precision(),
                     metrics.Recall(),
-                    metrics.FalsePositives(),
-                    metrics.TruePositives(),
-                    metrics.FalseNegatives(),
-                    metrics.TrueNegatives()
               ])
 
 # Display model summary
