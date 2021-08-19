@@ -9,12 +9,12 @@ stages:
     params:
       params.yaml:
         train.batch: 128
-        train.dataset: 2_rawdata_clean_no_duplicates
+        train.dataset: 0_rawdata
         train.epochs: 200
         train.l2_reg: 0.0005
         train.learning_rate: 0.001
         train.loss: categorical_crossentropy
-        train.model_name: Plantabit_tarbil_6
+        train.model_name: Plantabit_tarbil_4
         train.momentum: 0.9
         train.seed: 123
         train.steps_per_epoch: 5
@@ -22,15 +22,15 @@ stages:
     cmd: python utils/classifier/evaluate.py
     deps:
     - path: utils/classifier/dvc_objects/model/saved_model.pb
-      md5: 0a46a9fa4093a86f4523292e2ecec9f1
+      md5: 07a062eac62e3926d3acce4516c42ecd
       size: 469256
     - path: utils/classifier/evaluate.py
       md5: dd0d5ea7f56badcdaf03cb145086766a
       size: 3275
     outs:
     - path: utils/classifier/dvc_objects/confusion.json
-      md5: 5d8076d0bb98535d7c6cb6528f212720
-      size: 15161
+      md5: 134719c79c6e41572520c8e367930c37
+      size: 134926
     - path: utils/classifier/dvc_objects/test_scores.json
-      md5: e24ab7e7887ad068fb98d249d6a9e0a3
-      size: 269
+      md5: 47b0f5ad49bc11bc835e8d972ced600b
+      size: 266
