@@ -1,6 +1,6 @@
 train:
   seed: 123
-  model_name: "Plantabit_alpha_1"
+  model_name: "Plantabit_alpha_2"
   dataset: "0_rawdata"
   epochs: 30
   steps_per_epoch: 100
