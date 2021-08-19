@@ -76,10 +76,13 @@ test_acc = results[1]
 test_auc = results[2]
 test_prc = results[3]
 test_recall = results[4]
-test_fp = int(results[5])
-test_tp = int(results[6])
-test_fn = int(results[7])
-test_tn = int(results[8])
+# Define True Positive Ratio and True Negative Ratio as
+# TPR: Percentage of classes correctly classified
+# TNR: Percentage of classes incorrectly classified
+total = len(y_true)
+tp = len([x for x, y in zip(y_true, y_pred) if x == y])
+test_tpr = tp/total
+test_tnr = 1-test_tpr
 
 with open(scores_file, "w") as fd:
     json.dump({
@@ -88,10 +91,8 @@ with open(scores_file, "w") as fd:
             "test_auc": test_auc,
             "test_prc": test_prc,
             "test_recall": test_recall,
-            "test_fp": test_fp,
-            "test_tp": test_tp,
-            "test_fn": test_fn,
-            "test_tn": test_tn
+            "test_tpr": test_tpr,
+            "test_tnr": test_tnr
             }, fd, indent=4)
 
 # Save Confusion Matrix
