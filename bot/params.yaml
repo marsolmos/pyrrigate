@@ -1,9 +1,9 @@
 train:
   seed: 123
-  model_name: "Plantabit_tarbil_13"
-  dataset: "0_rawdata"
+  model_name: "Plantabit_tarbil_14"
+  dataset: "1_rawdata_clean"
   epochs: 105
-  steps_per_epoch: 65
+  steps_per_epoch: 35
   batch: 128
   loss: "categorical_crossentropy"
   learning_rate: 0.001
