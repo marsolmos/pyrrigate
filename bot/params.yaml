@@ -1,7 +1,7 @@
 train:
   seed: 123
-  model_name: "Plantabit_custom_tarbil_1"
-  dataset: "0_rawdata"
+  model_name: "Plantabit_custom_tarbil_2"
+  dataset: "1_rawdata_clean"
   epochs: 105
   steps_per_epoch: 5
   batch: 128
