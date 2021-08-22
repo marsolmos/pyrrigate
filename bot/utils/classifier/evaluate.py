@@ -56,7 +56,7 @@ test_datagen = ImageDataGenerator(rescale=1./255)
 # Flow validation images in batches of 32 using val_datagen generator
 test_generator = test_datagen.flow_from_directory(
         test_dir,
-        target_size=(227, 227),
+        target_size=(150, 150),
         batch_size=batch,
         seed=seed,
         class_mode='categorical')
