@@ -147,11 +147,8 @@ model.add(layers.Dense(
                     kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
                     ))
 
-# Create a fully connected layer with ReLU activation and 4096 hidden units
-model.add(layers.Dense(
-                    4096, activation='relu',
-                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
-                    ))
+# Add dropout to help reduce overfitting
+model.add(layers.Dropout(0.5))
 
 # Create output layer with a single node and sigmoid activation
 model.add(layers.Dense(
