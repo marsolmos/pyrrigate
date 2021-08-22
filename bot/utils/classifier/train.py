@@ -13,6 +13,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 from tensorflow.keras import layers
 from tensorflow.keras import metrics
+from tensorflow.keras import applications
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.regularizers import l2
 from tensorflow.keras.models import Sequential
@@ -68,7 +69,7 @@ train_datagen = ImageDataGenerator(
 # Note that the validation data should not be augmented!
 val_datagen = ImageDataGenerator(rescale=1./255)
 
-# Flow training images in batches of 32 using train_datagen generator
+# Flow training images in batches using train_datagen generator
 train_generator = train_datagen.flow_from_directory(
         train_dir,  # This is the source directory for training images
         target_size=(150, 150),  # All images will be resized to 150x150
@@ -77,7 +78,7 @@ train_generator = train_datagen.flow_from_directory(
         class_mode='categorical')
 
 
-# Flow validation images in batches of 32 using val_datagen generator
+# Flow validation images in batches using val_datagen generator
 validation_generator = val_datagen.flow_from_directory(
         validation_dir,
         target_size=(150, 150),
@@ -85,55 +86,18 @@ validation_generator = val_datagen.flow_from_directory(
         seed=seed,
         class_mode='categorical')
 
-# Our input feature map is 150x150x3: 150x150 for the image pixels, and 3 for
-# the three color channels: R, G, and B
-img_input = (150, 150, 3)
+# Build the VGG16 network
+base_model = applications.VGG16(weights='imagenet', include_top=False, input_shape=(150,150,3))
+base_model.trainable = False # Not trainable weights
+print('Base model loaded')
 
-# First convolution extracts 16 filters that are 11x11
-# Convolution is followed by a layer Normalization and
-# max-pooling layer with a 3x3 window
+# Build a classifier model to put on top of the convolutional model
 model = Sequential()
-model.add(layers.Conv2D(
-                    16, kernel_size=(3, 3),
-                    activation='relu', strides=(1, 1),
-                    padding="valid", input_shape=img_input,
-                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
-                    ))
-model.add(layers.BatchNormalization())
-model.add(layers.MaxPooling2D(pool_size=(2, 2)))
-
-# Second convolution extracts 32 filters that are 3x3
-# Convolution is followed by max-pooling layer with a 1x1 window
-model.add(layers.Conv2D(
-                    32, kernel_size=(3, 3),
-                    activation='relu', strides=(1, 1),
-                    padding="same",
-                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
-                    ))
-model.add(layers.BatchNormalization())
-model.add(layers.MaxPooling2D(pool_size=(2, 2)))
-
-# Third convolution extracts 64 filters that are 3x3
-model.add(layers.Conv2D(
-                    64, kernel_size=(3, 3),
-                    activation='relu', strides=(1, 1),
-                    padding="same",
-                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
-                    ))
-
-# Flatten feature map to a 1-dim tensor
+model.add(base_model)
 model.add(layers.Flatten())
-
-# Create a fully connected layer with ReLU activation and 128 hidden units
-model.add(layers.Dense(
-                    256, activation='relu',
-                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
-                    ))
-
-# Add dropout to help reduce overfitting
+model.add(layers.Dense(256, activation='relu'))
 model.add(layers.Dropout(0.5))
-
-# Create output layer with a single node and sigmoid activation
+# Create output layer with a 12 units and softmax activation
 model.add(layers.Dense(
                     12, activation='softmax',
                     kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)

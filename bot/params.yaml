@@ -1,6 +1,6 @@
 train:
   seed: 123
-  model_name: "Plantabit_custom_cnn_1"
+  model_name: "Plantabit_transfer_vgg16_1"
   dataset: "2_rawdata_clean_no_duplicates"
   epochs: 105
   steps_per_epoch: 25
