@@ -4,8 +4,8 @@ stages:
     cmd: python utils/classifier/train.py
     deps:
     - path: utils/classifier/train.py
-      md5: f3c887fb935592ffb37996dba9342b0a
-      size: 7594
+      md5: cbe5548cdfee64ea77724bafce715f2b
+      size: 7593
     params:
       params.yaml:
         train.batch: 128
@@ -22,15 +22,15 @@ stages:
     cmd: python utils/classifier/evaluate.py
     deps:
     - path: utils/classifier/dvc_objects/model/saved_model.pb
-      md5: 16982cbbdb36c61c0c0b2775193e7c99
-      size: 443366
+      md5: a08254abdc188c2d70d58533b8fdcdfc
+      size: 443361
     - path: utils/classifier/evaluate.py
       md5: dd0d5ea7f56badcdaf03cb145086766a
       size: 3275
     outs:
     - path: utils/classifier/dvc_objects/confusion.json
-      md5: 3ee2afde7be05b7152ae61cfd60c6908
-      size: 14830
+      md5: efdc31da2234a287f284cfd9e708cb9c
+      size: 14952
     - path: utils/classifier/dvc_objects/test_scores.json
-      md5: cdb971be89b3d777584747f69f3e78bb
-      size: 269
+      md5: d5ef1b36a98689a060b848d335998c5f
+      size: 255

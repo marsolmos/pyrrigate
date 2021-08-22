@@ -143,7 +143,7 @@ model.add(layers.Flatten())
 
 # Create a fully connected layer with ReLU activation and 4096 hidden units
 model.add(layers.Dense(
-                    4096, activation='relu',
+                    128, activation='relu',
                     kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
                     ))
 
