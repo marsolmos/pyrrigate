@@ -35,7 +35,7 @@ API_KEY = os.getenv('API_KEY')
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi! Welcome to Pyrrigate')
+    update.message.reply_text('Hi! Welcome to Planta-Bit Bot. How can I help you?')
 
 
 def help(update, context):

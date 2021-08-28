@@ -19,7 +19,7 @@ sys.path.insert(0, target_dir)
 
 # -- Project information -----------------------------------------------------
 
-project = 'Pyrrigate'
+project = 'Planta-Bit'
 copyright = '2021, Mariano Sánchez Olmos'
 author = 'Mariano Sánchez Olmos'
 
