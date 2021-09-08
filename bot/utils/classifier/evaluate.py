@@ -13,6 +13,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
+from sklearn.metrics import precision_recall_fscore_support
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
@@ -74,8 +75,7 @@ results = model.evaluate(test_generator)
 test_loss = results[0]
 test_acc = results[1]
 test_auc = results[2]
-test_prc = results[3]
-test_recall = results[4]
+test_prc, test_recall, _, _ = precision_recall_fscore_support(y_true, y_pred, average='macro')
 # Define True Positive Ratio and True Negative Ratio as
 # TPR: Percentage of classes correctly classified
 # TNR: Percentage of classes incorrectly classified

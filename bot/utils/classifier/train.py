@@ -148,8 +148,6 @@ model.compile(loss=loss,
               metrics=[
                     metrics.CategoricalAccuracy(),
                     metrics.AUC(),
-                    metrics.Precision(),
-                    metrics.Recall(),
               ])
 
 # Display model summary
