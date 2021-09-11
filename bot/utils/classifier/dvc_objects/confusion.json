@@ -2,7 +2,7 @@
     "confusion": [
         {
             "actual": "Aloe barbadensis miller",
-            "predicted": "Cordyline australis"
+            "predicted": "Monstera adansonii"
         },
         {
             "actual": "Aloe barbadensis miller",
@@ -10,19 +10,15 @@
         },
         {
             "actual": "Aloe barbadensis miller",
-            "predicted": "Aloe barbadensis miller"
+            "predicted": "Monstera deliciosa"
         },
         {
             "actual": "Aloe barbadensis miller",
-            "predicted": "Chlorophytum comosum"
+            "predicted": "Monstera deliciosa"
         },
         {
             "actual": "Aloe barbadensis miller",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Aloe barbadensis miller",
-            "predicted": "Cordyline australis"
+            "predicted": "Monstera adansonii"
         },
         {
             "actual": "Aloe barbadensis miller",
@@ -30,15 +26,19 @@
         },
         {
             "actual": "Aloe barbadensis miller",
-            "predicted": "Sansevieria zeylanica"
+            "predicted": "Monstera adansonii"
         },
         {
             "actual": "Aloe barbadensis miller",
-            "predicted": "Chlorophytum comosum"
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Aloe barbadensis miller",
-            "predicted": "Aloe barbadensis miller"
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Aloe barbadensis miller",
+            "predicted": "Monstera deliciosa"
         },
         {
             "actual": "Anthurium",
@@ -46,27 +46,7 @@
         },
         {
             "actual": "Anthurium",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Anthurium",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Anthurium",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Anthurium",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Anthurium",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Anthurium",
-            "predicted": "Crassuwa ovata"
+            "predicted": "Aloe barbadensis miller"
         },
         {
             "actual": "Anthurium",
@@ -74,351 +54,387 @@
         },
         {
             "actual": "Anthurium",
-            "predicted": "Cordyline australis"
+            "predicted": "Howea forsteriana"
         },
         {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Chlorophytum comosum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Cordyline australis",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Cordyline australis",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Cordyline australis",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Cordyline australis",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Cordyline australis",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Monstera adansonii"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Crassuwa ovata",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Epipremnum aureum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Monstera adansonii"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Crassuwa ovata"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Ficus lyrata",
-            "predicted": "Monstera adansonii"
-        },
-        {
-            "actual": "Howea forsteriana",
-            "predicted": "Crassuwa ovata"
-        },
-        {
-            "actual": "Howea forsteriana",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Howea forsteriana",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Howea forsteriana",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Howea forsteriana",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Howea forsteriana",
-            "predicted": "Crassuwa ovata"
-        },
-        {
-            "actual": "Monstera adansonii",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Monstera adansonii",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Monstera adansonii",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Monstera adansonii",
+            "actual": "Anthurium",
             "predicted": "Sansevieria zeylanica"
         },
         {
-            "actual": "Monstera adansonii",
+            "actual": "Anthurium",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Anthurium",
+            "predicted": "Anthurium"
+        },
+        {
+            "actual": "Anthurium",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Anthurium",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Chlorophytum comosum",
             "predicted": "Aloe barbadensis miller"
         },
         {
-            "actual": "Monstera adansonii",
+            "actual": "Chlorophytum comosum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Ficus lyrata"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Ficus lyrata"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Chlorophytum comosum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Cordyline australis",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Cordyline australis",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Cordyline australis",
+            "predicted": "Spathiphyllum"
+        },
+        {
+            "actual": "Cordyline australis",
+            "predicted": "Chlorophytum comosum"
+        },
+        {
+            "actual": "Cordyline australis",
+            "predicted": "Ficus lyrata"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Crassuwa ovata",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Epipremnum aureum",
             "predicted": "Cordyline australis"
         },
         {
-            "actual": "Monstera adansonii",
-            "predicted": "Chlorophytum comosum"
+            "actual": "Epipremnum aureum",
+            "predicted": "Sansevieria zeylanica"
         },
         {
-            "actual": "Monstera adansonii",
-            "predicted": "Chlorophytum comosum"
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera adansonii"
         },
         {
-            "actual": "Monstera adansonii",
-            "predicted": "Chlorophytum comosum"
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera adansonii"
         },
         {
-            "actual": "Monstera adansonii",
+            "actual": "Epipremnum aureum",
             "predicted": "Cordyline australis"
         },
         {
-            "actual": "Monstera adansonii",
-            "predicted": "Chlorophytum comosum"
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera adansonii"
         },
         {
-            "actual": "Monstera adansonii",
-            "predicted": "Chlorophytum comosum"
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera adansonii"
         },
         {
-            "actual": "Monstera adansonii",
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Epipremnum aureum",
             "predicted": "Aloe barbadensis miller"
         },
         {
-            "actual": "Monstera adansonii",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Monstera deliciosa",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Monstera deliciosa",
+            "actual": "Epipremnum aureum",
             "predicted": "Chlorophytum comosum"
         },
         {
-            "actual": "Monstera deliciosa",
+            "actual": "Epipremnum aureum",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Anthurium"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Ficus lyrata"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Chlorophytum comosum"
+        },
+        {
+            "actual": "Ficus lyrata",
             "predicted": "Cordyline australis"
         },
         {
-            "actual": "Monstera deliciosa",
-            "predicted": "Cordyline australis"
+            "actual": "Ficus lyrata",
+            "predicted": "Monstera adansonii"
         },
         {
-            "actual": "Monstera deliciosa",
+            "actual": "Ficus lyrata",
+            "predicted": "Anthurium"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Ficus lyrata",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Ficus lyrata",
             "predicted": "Epipremnum aureum"
         },
         {
+            "actual": "Howea forsteriana",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Howea forsteriana",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Howea forsteriana",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Howea forsteriana",
+            "predicted": "Chlorophytum comosum"
+        },
+        {
+            "actual": "Howea forsteriana",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Howea forsteriana",
+            "predicted": "Anthurium"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Chlorophytum comosum"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Anthurium"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Chlorophytum comosum"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera adansonii",
+            "predicted": "Cordyline australis"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Monstera adansonii"
+        },
+        {
             "actual": "Monstera deliciosa",
             "predicted": "Cordyline australis"
         },
         {
             "actual": "Monstera deliciosa",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Monstera deliciosa",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Monstera deliciosa",
             "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Monstera deliciosa",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Monstera deliciosa",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Monstera deliciosa",
-            "predicted": "Crassuwa ovata"
-        },
-        {
-            "actual": "Monstera deliciosa",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Monstera deliciosa",
-            "predicted": "Chlorophytum comosum"
         },
         {
             "actual": "Sansevieria zeylanica",
-            "predicted": "Chlorophytum comosum"
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Sansevieria zeylanica",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Sansevieria zeylanica",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Sansevieria zeylanica",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Sansevieria zeylanica",
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Sansevieria zeylanica",
@@ -426,27 +442,11 @@
         },
         {
             "actual": "Sansevieria zeylanica",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Sansevieria zeylanica",
             "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Sansevieria zeylanica",
-            "predicted": "Aloe barbadensis miller"
-        },
-        {
-            "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
         },
         {
             "actual": "Sansevieria zeylanica",
@@ -454,27 +454,59 @@
         },
         {
             "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Sansevieria zeylanica",
-            "predicted": "Chlorophytum comosum"
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Sansevieria zeylanica",
-            "predicted": "Cordyline australis"
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Spathiphyllum",
-            "predicted": "Chlorophytum comosum"
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Monstera adansonii"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Monstera deliciosa"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Howea forsteriana"
+        },
+        {
+            "actual": "Spathiphyllum",
+            "predicted": "Monstera adansonii"
         },
         {
             "actual": "Spathiphyllum",
@@ -482,23 +514,7 @@
         },
         {
             "actual": "Spathiphyllum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Epipremnum aureum"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Sansevieria zeylanica"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Crassuwa ovata"
+            "predicted": "Monstera adansonii"
         },
         {
             "actual": "Spathiphyllum",
@@ -506,31 +522,15 @@
         },
         {
             "actual": "Spathiphyllum",
-            "predicted": "Cordyline australis"
+            "predicted": "Howea forsteriana"
         },
         {
             "actual": "Spathiphyllum",
-            "predicted": "Cordyline australis"
+            "predicted": "Monstera adansonii"
         },
         {
             "actual": "Spathiphyllum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Cordyline australis"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Chlorophytum comosum"
-        },
-        {
-            "actual": "Spathiphyllum",
-            "predicted": "Crassuwa ovata"
+            "predicted": "Aloe barbadensis miller"
         }
     ]
 }
