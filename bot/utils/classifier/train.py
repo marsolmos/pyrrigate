@@ -89,23 +89,23 @@ validation_generator = val_datagen.flow_from_directory(
 # the three color channels: R, G, and B
 img_input = (150, 150, 3)
 
-# First convolution extracts 16 filters that are 11x11
+# First convolution extracts 96 filters that are 11x11
 # Convolution is followed by a layer Normalization and
-# max-pooling layer with a 3x3 window
+# max-pooling layer with a 2x2 window
 model = Sequential()
 model.add(layers.Conv2D(
-                    16, kernel_size=(3, 3),
-                    activation='relu', strides=(1, 1),
+                    96, kernel_size=(11, 11),
+                    activation='relu', strides=(4, 4),
                     padding="valid", input_shape=img_input,
                     kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
                     ))
 model.add(layers.BatchNormalization())
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-# Second convolution extracts 32 filters that are 3x3
+# Second convolution extracts 256 filters that are 5x5
 # Convolution is followed by max-pooling layer with a 1x1 window
 model.add(layers.Conv2D(
-                    32, kernel_size=(3, 3),
+                    256, kernel_size=(5, 5),
                     activation='relu', strides=(1, 1),
                     padding="same",
                     kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
@@ -113,25 +113,45 @@ model.add(layers.Conv2D(
 model.add(layers.BatchNormalization())
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-# Third convolution extracts 64 filters that are 3x3
+# Third convolution extracts 384 filters that are 3x3
 model.add(layers.Conv2D(
-                    64, kernel_size=(3, 3),
+                    384, kernel_size=(3, 3),
                     activation='relu', strides=(1, 1),
                     padding="same",
                     kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
                     ))
 
-# Flatten feature map to a 1-dim tensor
-model.add(layers.Flatten())
-
-# Create a fully connected layer with ReLU activation and 128 hidden units
-model.add(layers.Dense(
-                    256, activation='relu',
+# Fourth convolution extracts 192 filters that are 3x3
+model.add(layers.Conv2D(
+                    384, kernel_size=(3, 3),
+                    activation='relu', strides=(1, 1),
+                    padding="same",
                     kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
                     ))
 
-# Add dropout to help reduce overfitting
-model.add(layers.Dropout(0.5))
+# Fifth convolution extracts 192 filters that are 3x3
+model.add(layers.Conv2D(
+                    256, kernel_size=(3, 3),
+                    activation='relu', strides=(1, 1),
+                    padding="same",
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
+model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+
+# Flatten feature map to a 1-dim tensor
+model.add(layers.Flatten())
+
+# Create a fully connected layer with ReLU activation and 4096 hidden units
+model.add(layers.Dense(
+                    4096, activation='relu',
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
+
+# Create a fully connected layer with ReLU activation and 4096 hidden units
+model.add(layers.Dense(
+                    4096, activation='relu',
+                    kernel_regularizer=l2(l2_reg), bias_regularizer=l2(l2_reg)
+                    ))
 
 # Create output layer with a single node and sigmoid activation
 model.add(layers.Dense(
