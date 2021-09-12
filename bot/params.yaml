@@ -1,11 +1,11 @@
 train:
   seed: 123
-  model_name: "Plantabit_custom_cnn_1_um"
+  model_name: "Plantabit_transfer_vgg16_3_um"
   dataset: "2_rawdata_clean_no_duplicates"
   epochs: 105
   steps_per_epoch: 25
   batch: 32
   loss: "categorical_crossentropy"
-  learning_rate: 0.001
+  learning_rate: 0.0001
   l2_reg: 0.0005
   momentum: 0.9
