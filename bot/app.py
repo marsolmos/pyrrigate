@@ -18,6 +18,8 @@ bot.
 import os
 import logging
 from dotenv import load_dotenv
+from io import BytesIO
+from utils.classifier.predict import predict_plant
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler
 from telegram.ext import MessageHandler, Filters, ConversationHandler
@@ -40,11 +42,8 @@ API_KEY = '1983590680:AAFNogAyTokWlrEws_GMq_opNR_ysW1Xi0M'
 def start(update: Update, context: CallbackContext) -> None:
     """Sends initial message with three inline buttons attached."""
     keyboard = [
-        [
-            InlineKeyboardButton("What plant is this?", callback_data='1'),
-            InlineKeyboardButton("Recommended cares for plant species", callback_data='2'),
-        ],
-        [InlineKeyboardButton("Help", callback_data='3')],
+        [InlineKeyboardButton("What plant is this?", callback_data='1')],
+        [InlineKeyboardButton("Help", callback_data='2')],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -68,23 +67,23 @@ def button(update: Update, context: CallbackContext) -> None:
             )
 
     elif selected_option == '2':
-        query.edit_message_text(
-            text="Awesome!",
-            )
-        plant_cares()
-
-    elif selected_option == '3':
         help_command(update, context)
-
-    elif selected_option == '4':
-        start()
 
     else:
         query.edit_message_text(text=f"There was an unexpected error. Please, try again by typing /start")
 
 
-def plant_cares():
-    update.message.reply_text("Please, give me the name of your plant species")
+def photo(update: Update, context: CallbackContext):
+    file = context.bot.get_file(update.message.photo[-1].file_id)
+    f =  BytesIO(file.download_as_bytearray()) # f is now a file object you can do something with
+
+    print('I have the photo')
+    result = predict_plant(f)
+    # result = "Anthurium"
+
+    response = 'I procsseed that and the result was %s' % (result,)
+
+    context.bot.send_message(chat_id=update.message.chat_id, text=response)
 
 
 def text_message(update, context):
@@ -117,6 +116,7 @@ def main() -> None:
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CallbackQueryHandler(button))
     dp.add_handler(CommandHandler('help', help_command))
+    dp.add_handler(MessageHandler(Filters.photo, photo))
 
     # On non-command i.e. message - return special message
     dp.add_handler(MessageHandler(Filters.text, text_message))
