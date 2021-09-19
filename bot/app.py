@@ -35,7 +35,6 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
-API_KEY = '1983590680:AAFNogAyTokWlrEws_GMq_opNR_ysW1Xi0M'
 
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
@@ -81,7 +80,7 @@ def photo(update: Update, context: CallbackContext):
     result = predict_plant(f)
     # result = "Anthurium"
 
-    response = 'I procsseed that and the result was %s' % (result,)
+    response = 'I have processed the image and I think that the plant species is  %s' % (result,)
 
     context.bot.send_message(chat_id=update.message.chat_id, text=response)
 

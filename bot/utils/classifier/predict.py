@@ -1,4 +1,7 @@
 '''Prediction Script'''
+import cv2
+from io import BytesIO
+import json
 import numpy as np
 import os
 import yaml
@@ -10,7 +13,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-def predict_plant(image):
+def predict_plant(input_stream):
     '''
     Predict image species based on incoming image
 
@@ -28,20 +31,19 @@ def predict_plant(image):
     model = tf.keras.models.load_model('utils/classifier/dvc_objects/model')
     print('TensorFlow trained model correctly loaded')
 
-    # Create mapping dict for test classes
-    map_classes = {}
-    index = 0
-    for i in os.listdir(test_dir):
-        map_classes[index] = i
-        index += 1
+    # Load mapping dict for test classes
+    map_file = "utils/classifier/dvc_objects/map_classes.json"
+    with open(map_file) as json_file:
+        map_classes = json.load(json_file)
 
     # Predict with the trained model
-    image = image / 255.0
-    print('Image looks like')
-    print(image)
+    image = cv2.imdecode(np.fromstring(input_stream.read(), np.uint8), 1) # Convert IO Bytes object into array
+    image = cv2.resize(image, dsize=(150, 150), interpolation=cv2.INTER_CUBIC) # Resize image
+    image = image / 255.0 # Normalize values
+    image = image.reshape(-1, 150, 150, 3) # Reshape array into trained's model expected shape
     Y_pred = model.predict(image)
     y_pred = np.argmax(Y_pred, axis=1)
     # Map classes with class_dict
-    y_pred = [map_classes[k] for k in y_pred]
+    y_pred = map_classes[str(y_pred[0])]
 
     return y_pred
