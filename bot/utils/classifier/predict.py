@@ -28,7 +28,7 @@ def predict_plant(input_stream):
     model_name = params["model_name"]
 
     # Load saved model
-    model = tf.keras.models.load_model('utils/classifier/dvc_objects/model')
+    model = tf.keras.models.load_model('utils/classifier/models/{}'.format(model_name))
     print('TensorFlow trained model correctly loaded')
 
     # Load mapping dict for test classes
