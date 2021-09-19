@@ -21,6 +21,7 @@ scores_file = "utils/classifier/dvc_objects/test_scores.json"
 confusion_file = "utils/classifier/dvc_objects/confusion.json"
 prc_file = "utils/classifier/dvc_objects/prc.json"
 roc_file = "utils/classifier/dvc_objects/roc.json"
+map_file = "utils/classifier/dvc_objects/map_classes.json"
 
 # Read parameters and assign them to a local variable
 params = yaml.safe_load(open("params.yaml"))["train"]
@@ -50,6 +51,8 @@ index = 0
 for i in os.listdir(test_dir):
     map_classes[index] = i
     index += 1
+with open(map_file, "w") as fd:
+    json.dump(map_classes, fd, indent=4)
 
 # Note that the test data should not be augmented!
 test_datagen = ImageDataGenerator(rescale=1./255)
