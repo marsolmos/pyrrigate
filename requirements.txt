@@ -4,7 +4,7 @@ Babel==2.9.1
 beautifulsoup4==4.9.3
 bing-image-downloader==1.1.1
 bs4==0.0.1
-certifi==2020.12.5
+certifi==2023.7.22
 chardet==4.0.0
 colorama==0.4.4
 docutils==0.16
